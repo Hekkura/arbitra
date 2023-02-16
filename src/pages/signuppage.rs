@@ -99,8 +99,13 @@ impl Component for SignupPage {
                             </div>
                                 // ===========================================
                             
-                            <button type="button" class="btn text-light" style="background-color:#A73034">{ "Sign Up" } </button>
-                            
+                            // <button type="button" class="btn text-light" style="background-color:#A73034; padding-bottom:12px;">{ "Sign Up" } </button>
+                            <button 
+                                type="submit"
+                                class="signup-submit"
+                            >
+                            { "Sign Up" }
+                            </button>
                             
                             <div class="mt-3 mb-1"> 
                                 <p class="text-center">{ "or sign up with:" }</p>

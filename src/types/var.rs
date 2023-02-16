@@ -10,3 +10,8 @@ pub struct DashboardData {
     pub request_amount: Option<u32>,
     pub ping : Option<u32>,
 }
+
+// pub struct DashboardData {
+//     pub request_amount: Vec<SerdeJSONValue>,
+//     pub ping : Option<u32>,
+// }

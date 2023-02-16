@@ -17,8 +17,8 @@ app.listen(port, () => {
 app.get('/dashboard_data', (req, res) => {
   var data =
     {
-      request_amount: 1412,
-      ping: 57,
+      request_amount: 999,
+      ping: null,
     }
 
   let condition = "server error not";

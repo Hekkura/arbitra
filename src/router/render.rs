@@ -7,7 +7,13 @@ use crate::pages::{
     homepage::HomePage,
     loginpage::LoginPage,
     signuppage::SignupPage,
-    indexpage::IndexPage
+    indexpage::IndexPage,
+    //TEMPORARY
+    indexpage_window_createindex::IndexCreate,
+    indexpage_window_createapp::AppCreate,
+    indexpage_window_insertrecord::InsertRecord,
+    indexpage_window_editrecord::EditRecord,
+    indexpage_window_deleterecord::DeleteRecord,
 };
 
 
@@ -77,6 +83,33 @@ impl Component for Render {
                 AppRoute::IndexPage => {
                     html! {
                         <IndexPage/>
+                    }
+                }
+
+                //TEMPORARY 
+                AppRoute::IndexCreate => {
+                    html! {
+                        <IndexCreate/>
+                    }
+                }
+                AppRoute::AppCreate => {
+                    html! {
+                        <AppCreate/>
+                    }
+                }
+                AppRoute::InsertRecord => {
+                    html! {
+                        <InsertRecord/>
+                    }
+                }
+                AppRoute::EditRecord => {
+                    html! {
+                        <EditRecord/>
+                    }
+                }
+                AppRoute::DeleteRecord => {
+                    html! {
+                        <DeleteRecord/>
                     }
                 }
             }
