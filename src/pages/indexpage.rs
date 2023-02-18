@@ -9,41 +9,22 @@ use crate::components::{
 };
 
 pub enum Msg {
-    //OPEN WINDOWS
-    // OpenCreateIndex,
-    // OpenCreateApp,
-    // OpenInsertRecord,
-    // OpenEditRecord,
-    // OpenDeleteRecord,
-    //CLOSE WINDOWS
-    // CloseCreateIndex,
-    // CloseCreateApp,
-    // CloseInsertRecord,
-    // CloseEditRecord,
-    // CloseDeleteRecord,
-
     //EVENT TOGGLE (MERGE CLOSE DAN OPEN)
     ToggleCreateApp,
     ToggleCreateIndex,
     ToggleInsertRecord,
     ToggleEditRecord,
     ToggleDeleteRecord,
-
 }
 
 pub struct IndexPage {
-    // `ComponentLink` is like a reference to a component.
-    // It can be used to send messages to the component
     link: ComponentLink<Self>,
-
     //DISPLAY WINDOWS / MODAL (STATE)
     display_create_app: bool,
     display_create_index: bool,
     display_insert_record: bool,
     display_edit_record: bool,
     display_delete_record: bool,
-
-    
 }
 
 impl Component for IndexPage {
@@ -53,7 +34,6 @@ impl Component for IndexPage {
     fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
         Self {
             link,
-
             //DISPLAY WINDOWS / MODAL (STATE)
             display_create_index: false,
             display_create_app: false,
@@ -110,7 +90,6 @@ impl Component for IndexPage {
         let ToggleEditRecord = self.display_edit_record;
         let ToggleDeleteRecord = self.display_delete_record;
         
-
         //CONDITIONAL KALAU BUKA CREATE APP
         if ToggleCreateApp { 
             html! {
@@ -514,93 +493,93 @@ impl Component for IndexPage {
         } else if ToggleDeleteRecord {
             html!{
                 <div> 
-                    // <div>
-                    //     <div class="leftbox index-sidebar-small">
-                    //         <img class="index-logo" src="images/Arbitra_LogoOnly.png"/> 
-                    //     </div>
+                    <div>
+                        <div class="leftbox index-sidebar-small">
+                            <img class="index-logo" src="images/Arbitra_LogoOnly.png"/> 
+                        </div>
 
-                    //     <div class="rightSideBar">
-                    //         <p style="color: #bd3143; font-size: 2rem">{"S E A R C H"}</p>
-                    //         <p style="margin-top: -8px">{ "Application" }</p>
+                        <div class="rightSideBar">
+                            <p style="color: #bd3143; font-size: 2rem">{"S E A R C H"}</p>
+                            <p style="margin-top: -8px">{ "Application" }</p>
 
-                    //         <div class="dropdown">
-                    //             <button class="mainmenubtn"><img class="applicationIcon" src="images/APP.png"/>{ "Scara \u{00a0} \u{23F7}"}</button>
-                    //             <div class="dropdown-child">
-                    //                 <a 
-                    //                     href="#" 
-                    //                     onclick=self.link.callback(|_| Msg::ToggleCreateApp)>
-                    //                     { "Create New Application" }
-                    //                 </a>
-                    //                 // <a href="#">{ "Link 2" }</a>
-                    //                 // <a href="#">{ "Link 3" }</a>
-                    //             </div>
-                    //         </div>
+                            <div class="dropdown">
+                                <button class="mainmenubtn"><img class="applicationIcon" src="images/APP.png"/>{ "Scara \u{00a0} \u{23F7}"}</button>
+                                <div class="dropdown-child">
+                                    <a 
+                                        href="#" 
+                                        onclick=self.link.callback(|_| Msg::ToggleCreateApp)>
+                                        { "Create New Application" }
+                                    </a>
+                                    // <a href="#">{ "Link 2" }</a>
+                                    // <a href="#">{ "Link 3" }</a>
+                                </div>
+                            </div>
                             
-                    //         <br/><br/>
+                            <br/><br/>
 
-                    //         <p class="index-directry">{ "\u{007C}\u{00a0} Index" }</p>
-                    //         <p class="index-directry">{ "\u{007C}\u{00a0} Dictionary" }</p>
-                    //         <p class="index-directry">{ "\u{007C}\u{00a0} Lorem Ipsum" }</p>
-                    //         <p class="index-directry">{ "\u{007C}\u{00a0} Lorem Ipsum" }</p>
-                    //     </div>
-                    // </div>
+                            <p class="index-directry">{ "\u{007C}\u{00a0} Index" }</p>
+                            <p class="index-directry">{ "\u{007C}\u{00a0} Dictionary" }</p>
+                            <p class="index-directry">{ "\u{007C}\u{00a0} Lorem Ipsum" }</p>
+                            <p class="index-directry">{ "\u{007C}\u{00a0} Lorem Ipsum" }</p>
+                        </div>
+                    </div>
 
-                    // <div>
-                    //     <div class="top-index-dashboard">
+                    <div>
+                        <div class="top-index-dashboard">
 
-                    //         <div class="dropdownIndex">
-                    //             <button class="mainmenubtnIndex">{ "INDEX NAME \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{23F7}"}</button>
-                    //             <div class="dropdown-childIndex">
-                    //                 <a 
-                    //                     href="#"
-                    //                     onclick=self.link.callback(|_| Msg::ToggleCreateIndex)>
-                    //                     { "Create New Index" }
-                    //                 </a>
-                    //                 // <a href="#">{ "Link 2" }</a>
-                    //                 // <a href="#">{ "Link 3" }</a>
-                    //             </div>
-                    //         </div>
+                            <div class="dropdownIndex">
+                                <button class="mainmenubtnIndex">{ "INDEX NAME \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{23F7}"}</button>
+                                <div class="dropdown-childIndex">
+                                    <a 
+                                        href="#"
+                                        onclick=self.link.callback(|_| Msg::ToggleCreateIndex)>
+                                        { "Create New Index" }
+                                    </a>
+                                    // <a href="#">{ "Link 2" }</a>
+                                    // <a href="#">{ "Link 3" }</a>
+                                </div>
+                            </div>
 
-                    //         <div class="recordData">
-                    //             <p class="recordNum">{ "No. of Records \u{00a0} \u{00a0} \u{00a0} \u{00a0} 1.000.000.000" }</p>
-                    //             <p style="float: left;">{ "\u{00a0} \u{00a0} \u{00a0}" }</p>
-                    //             <p class="recordSize">{ "Average Record Size\u{00a0} \u{00a0} \u{00a0} \u{00a0} 1.000.000.000B" }</p>
-                    //         </div>
+                            <div class="recordData">
+                                <p class="recordNum">{ "No. of Records \u{00a0} \u{00a0} \u{00a0} \u{00a0} 1.000.000.000" }</p>
+                                <p style="float: left;">{ "\u{00a0} \u{00a0} \u{00a0}" }</p>
+                                <p class="recordSize">{ "Average Record Size\u{00a0} \u{00a0} \u{00a0} \u{00a0} 1.000.000.000B" }</p>
+                            </div>
 
-                    //         <br/><br/><br/>
+                            <br/><br/><br/>
 
-                    //         <div class="dropdownRecord">
-                    //             <button class="mainmenubtnRecord">{ "New Record \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{23F7}"}</button>
-                    //             <div class="dropdown-childRecord">
-                    //                 <a href="#" onclick=self.link.callback(|_| Msg::ToggleInsertRecord)>{ "Insert New Record" }</a>
-                    //                 <a href="#" onclick=self.link.callback(|_| Msg::ToggleEditRecord)>{ "Edit Record" }</a>
-                    //                 <a href="#" onclick=self.link.callback(|_| Msg::ToggleDeleteRecord)>{ "Delete Record" }</a>
-                    //             </div>
-                    //         </div>
+                            <div class="dropdownRecord">
+                                <button class="mainmenubtnRecord">{ "New Record \u{00a0} \u{00a0} \u{00a0} \u{00a0} \u{23F7}"}</button>
+                                <div class="dropdown-childRecord">
+                                    <a href="#" onclick=self.link.callback(|_| Msg::ToggleInsertRecord)>{ "Insert New Record" }</a>
+                                    <a href="#" onclick=self.link.callback(|_| Msg::ToggleEditRecord)>{ "Edit Record" }</a>
+                                    <a href="#" onclick=self.link.callback(|_| Msg::ToggleDeleteRecord)>{ "Delete Record" }</a>
+                                </div>
+                            </div>
 
-                    //         <div class="dropdownRecord">
-                    //             <button class="mainmenubtnRecord">{ "Add Records \u{00a0} \u{00a0} \u{00a0} \u{23F7}"}</button>
-                    //             <div class="dropdown-childRecord">
-                    //                 <a href="#">{ "Link 1" }</a>
-                    //                 <a href="#">{ "Link 2" }</a>
-                    //                 <a href="#">{ "Link 3" }</a>
-                    //             </div>
-                    //         </div>
+                            <div class="dropdownRecord">
+                                <button class="mainmenubtnRecord">{ "Add Records \u{00a0} \u{00a0} \u{00a0} \u{23F7}"}</button>
+                                <div class="dropdown-childRecord">
+                                    <a href="#">{ "Link 1" }</a>
+                                    <a href="#">{ "Link 2" }</a>
+                                    <a href="#">{ "Link 3" }</a>
+                                </div>
+                            </div>
 
-                    //         <div class="dropdownRecord">
-                    //             <button class="mainmenubtnRecord">{ "Manage Index \u{00a0} \u{00a0} \u{00a0} \u{23F7}"}</button>
-                    //             <div class="dropdown-childRecord">
-                    //                 <a href="#">{ "Link 1" }</a>
-                    //                 <a href="#">{ "Link 2" }</a>
-                    //                 <a href="#">{ "Link 3" }</a>
-                    //             </div>
-                    //         </div>
+                            <div class="dropdownRecord">
+                                <button class="mainmenubtnRecord">{ "Manage Index \u{00a0} \u{00a0} \u{00a0} \u{23F7}"}</button>
+                                <div class="dropdown-childRecord">
+                                    <a href="#">{ "Link 1" }</a>
+                                    <a href="#">{ "Link 2" }</a>
+                                    <a href="#">{ "Link 3" }</a>
+                                </div>
+                            </div>
 
-                    //         <img class="copyIcon" src="images/Copy Icon.png"/>
-                    //         <img class="copyIcon" src="images/Refresh.png"/>
+                            <img class="copyIcon" src="images/Copy Icon.png"/>
+                            <img class="copyIcon" src="images/Refresh.png"/>
 
-                    //     </div>
-                    // </div>
+                        </div>
+                    </div>
 
                     //DISPLAY WINDOW DISINI         
                     <DeleteRecord
