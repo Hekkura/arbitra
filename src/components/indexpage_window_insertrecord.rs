@@ -1,26 +1,43 @@
 use yew::prelude::*;
 
-pub enum Msg {}
+pub enum Msg {
+    ToggleInsertRecord,
+}
+
+#[derive(Properties, Clone, Debug, PartialEq)]
+pub struct WindowInsertRecordProps {
+    // #[prop_or(String::from("this is value"))]
+    #[prop_or(false)]
+    pub display_insert_record: bool,
+    pub on_toggle:Callback<Msg>,
+}
 
 pub struct InsertRecord {
     // `ComponentLink` is like a reference to a component.
     // It can be used to send messages to the component
     link: ComponentLink<Self>,
+    props: WindowInsertRecordProps,
+    callback_toggle: Callback<Msg>,
 }
 
 impl Component for InsertRecord {
     type Message = Msg;
-    type Properties = ();
+    type Properties = WindowInsertRecordProps;
 
-    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
+    fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         Self {
             link,
+            callback_toggle: props.on_toggle.clone(),
+            props,
         }
     }
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
         match msg {
-
+            Msg::ToggleInsertRecord => {
+                self.callback_toggle.emit(Msg::ToggleInsertRecord);
+                true
+            }
         }
     }
 
@@ -41,7 +58,8 @@ impl Component for InsertRecord {
                         
                         <button 
                             type="button" 
-                            class="window-index-closebutton">
+                            class="window-index-closebutton"
+                            onclick=self.link.callback(|_| Msg::ToggleInsertRecord)>
                                 <img src="images/close.png" alt="close window" style="width: 32px"/> 
                         </button>
                     </div> 

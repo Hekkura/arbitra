@@ -1,26 +1,44 @@
 use yew::prelude::*;
 
-pub enum Msg {}
+pub enum Msg {
+    ToggleEditRecord,
+}
+
+#[derive(Properties, Clone, Debug, PartialEq)]
+pub struct WindowEditRecordProps {
+    // #[prop_or(String::from("this is value"))]
+    #[prop_or(false)]
+    pub display_edit_record: bool,
+    pub on_toggle:Callback<Msg>,
+}
+
 
 pub struct EditRecord {
     // `ComponentLink` is like a reference to a component.
     // It can be used to send messages to the component
     link: ComponentLink<Self>,
+    props: WindowEditRecordProps,
+    callback_toggle: Callback<Msg>,
 }
 
 impl Component for EditRecord {
     type Message = Msg;
-    type Properties = ();
+    type Properties = WindowEditRecordProps;
 
-    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
+    fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         Self {
             link,
+            callback_toggle: props.on_toggle.clone(),
+            props,
         }
     }
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
         match msg {
-
+            Msg::ToggleEditRecord => {
+                self.callback_toggle.emit(Msg::ToggleEditRecord);
+                true
+            }
         }
     }
 
@@ -41,7 +59,8 @@ impl Component for EditRecord {
                         
                         <button 
                             type="button" 
-                            class="window-index-closebutton">
+                            class="window-index-closebutton"
+                            onclick=self.link.callback(|_| Msg::ToggleEditRecord)>
                                 <img src="images/close.png" alt="close window" style="width: 32px"/> 
                         </button>
                     </div> 

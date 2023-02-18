@@ -1,26 +1,43 @@
 use yew::prelude::*;
 
-pub enum Msg {}
+pub enum Msg {
+    ToggleCreateIndex,
+}
 
+
+#[derive(Properties, Clone, Debug, PartialEq)]
+pub struct WindowCreateIndexProps {
+    // #[prop_or(String::from("this is value"))]
+    #[prop_or(false)]
+    pub display_create_index: bool,
+    pub on_toggle:Callback<Msg>,
+}
 pub struct IndexCreate {
     // `ComponentLink` is like a reference to a component.
     // It can be used to send messages to the component
     link: ComponentLink<Self>,
+    props: WindowCreateIndexProps,
+    callback_toggle: Callback<Msg>,
 }
 
 impl Component for IndexCreate {
     type Message = Msg;
-    type Properties = ();
+    type Properties = WindowCreateIndexProps;
 
-    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
+    fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         Self {
             link,
+            callback_toggle: props.on_toggle.clone(),
+            props,
         }
     }
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
-        match msg {
-
+        match msg{
+            Msg::ToggleCreateIndex => {
+                self.callback_toggle.emit(Msg::ToggleCreateIndex);
+                true
+            }
         }
     }
 
@@ -41,7 +58,8 @@ impl Component for IndexCreate {
                         
                         <button 
                             type="button" 
-                            class="window-index-closebutton">
+                            class="window-index-closebutton"
+                            onclick=self.link.callback(|_| Msg::ToggleCreateIndex)>
                                 <img src="images/close.png" alt="close window" style="width: 32px"/> 
                         </button>
                     </div> 

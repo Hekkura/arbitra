@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
 pub enum Msg {
-    ToggleCreateApp
+    ToggleCreateApp,
 }
 
 #[derive(Properties, Clone, Debug, PartialEq)]
