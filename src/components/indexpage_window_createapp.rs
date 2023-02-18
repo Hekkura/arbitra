@@ -1,26 +1,50 @@
 use yew::prelude::*;
 
-pub enum Msg {}
+pub enum Msg {
+    ToggleCreateApp
+}
+
+#[derive(Properties, Clone, Debug, PartialEq)]
+pub struct WindowCreateAppProps {
+    // #[prop_or(String::from("this is value"))]
+    #[prop_or(false)]
+    pub display_create_app: bool,
+    pub on_toggle:Callback<Msg>,
+}
+
 
 pub struct AppCreate {
-    // `ComponentLink` is like a reference to a component.
-    // It can be used to send messages to the component
+
     link: ComponentLink<Self>,
+    props: WindowCreateAppProps,
+    callback_toggle: Callback<Msg>,
+
 }
 
 impl Component for AppCreate {
     type Message = Msg;
-    type Properties = ();
+    type Properties = WindowCreateAppProps;
 
-    fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
+    fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         Self {
             link,
+            callback_toggle: props.on_toggle.clone(),
+            props,
+            
+            // {
+            //     display_create_app: props.display_create_app,
+            //     on_toggle: props.on_toggle,
+            // }
+
         }
     }
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
-        match msg {
-
+        match msg{
+            Msg::ToggleCreateApp => {
+                self.callback_toggle.emit(Msg::ToggleCreateApp);
+                true
+            }
         }
     }
 
@@ -41,7 +65,8 @@ impl Component for AppCreate {
                         
                         <button 
                             type="button" 
-                            class="window-index-closebutton">
+                            class="window-index-closebutton"
+                            onclick=self.link.callback(|_| Msg::ToggleCreateApp)>
                                 <img src="images/close.png" alt="close window" style="width: 32px"/> 
                         </button>
                     </div> 
@@ -58,7 +83,6 @@ impl Component for AppCreate {
             
                     // <div class="window-confirm-button">
                     // </div>
-                    </form>   
 
                     <button 
                         type="submit"
@@ -67,9 +91,12 @@ impl Component for AppCreate {
                     >
                     { "CREATE APPLICATION" }
                     </button>
+                    </form>
+
+                    
                 </div>
 
             </div>
         }
-    }
+    }  
 }

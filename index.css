@@ -239,7 +239,7 @@ input[type=password]:focus {
     justify-content: center;
 }
 
-.header-2 .header-right input, button, form {
+.header-2 .header-right input, button {
     padding: 0px 4px 4px 4px;
     outline: none;
     height:28px;
