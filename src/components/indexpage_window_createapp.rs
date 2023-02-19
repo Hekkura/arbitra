@@ -9,7 +9,7 @@ pub struct WindowCreateAppProps {
     // #[prop_or(String::from("this is value"))]
     #[prop_or(false)]
     pub display_create_app: bool,
-    pub on_toggle:Callback<Msg>,
+    pub on_toggle_createapp:Callback<Msg>,
 }
 
 
@@ -17,7 +17,7 @@ pub struct AppCreate {
 
     link: ComponentLink<Self>,
     props: WindowCreateAppProps,
-    callback_toggle: Callback<Msg>,
+    callback_toggle_createapp: Callback<Msg>,
 
 }
 
@@ -28,7 +28,7 @@ impl Component for AppCreate {
     fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         Self {
             link,
-            callback_toggle: props.on_toggle.clone(),
+            callback_toggle_createapp: props.on_toggle_createapp.clone(),
             props,
             
             // {
@@ -42,7 +42,7 @@ impl Component for AppCreate {
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
         match msg{
             Msg::ToggleCreateApp => {
-                self.callback_toggle.emit(Msg::ToggleCreateApp);
+                self.callback_toggle_createapp.emit(Msg::ToggleCreateApp);
                 true
             }
         }

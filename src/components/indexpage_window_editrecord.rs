@@ -9,7 +9,7 @@ pub struct WindowEditRecordProps {
     // #[prop_or(String::from("this is value"))]
     #[prop_or(false)]
     pub display_edit_record: bool,
-    pub on_toggle:Callback<Msg>,
+    pub on_toggle_editrecord:Callback<Msg>,
 }
 
 
@@ -18,7 +18,7 @@ pub struct EditRecord {
     // It can be used to send messages to the component
     link: ComponentLink<Self>,
     props: WindowEditRecordProps,
-    callback_toggle: Callback<Msg>,
+    callback_toggle_editecord: Callback<Msg>,
 }
 
 impl Component for EditRecord {
@@ -28,7 +28,7 @@ impl Component for EditRecord {
     fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         Self {
             link,
-            callback_toggle: props.on_toggle.clone(),
+            callback_toggle_editecord: props.on_toggle_editrecord.clone(),
             props,
         }
     }
@@ -36,7 +36,7 @@ impl Component for EditRecord {
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
         match msg {
             Msg::ToggleEditRecord => {
-                self.callback_toggle.emit(Msg::ToggleEditRecord);
+                self.callback_toggle_editecord.emit(Msg::ToggleEditRecord);
                 true
             }
         }

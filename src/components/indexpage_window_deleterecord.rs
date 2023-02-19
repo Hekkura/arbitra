@@ -10,7 +10,7 @@ pub struct WindowDeleteRecordProps {
     // #[prop_or(String::from("this is value"))]
     #[prop_or(false)]
     pub display_delete_record: bool,
-    pub on_toggle:Callback<Msg>,
+    pub on_toggle_deleterecord:Callback<Msg>,
 }
 
 
@@ -19,7 +19,7 @@ pub struct DeleteRecord {
     // It can be used to send messages to the component
     link: ComponentLink<Self>,
     props: WindowDeleteRecordProps,
-    callback_toggle: Callback<Msg>,
+    callback_toggle_deleterecord: Callback<Msg>,
 }
 
 impl Component for DeleteRecord {
@@ -29,7 +29,7 @@ impl Component for DeleteRecord {
     fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         Self {
             link,
-            callback_toggle: props.on_toggle.clone(),
+            callback_toggle_deleterecord: props.on_toggle_deleterecord.clone(),
             props,
         }
     }
@@ -37,7 +37,7 @@ impl Component for DeleteRecord {
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
         match msg {
             Msg::ToggleDeleteRecord => {
-                self.callback_toggle.emit(Msg::ToggleDeleteRecord);
+                self.callback_toggle_deleterecord.emit(Msg::ToggleDeleteRecord);
                 true
             }
         }

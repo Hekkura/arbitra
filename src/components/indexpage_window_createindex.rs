@@ -10,14 +10,14 @@ pub struct WindowCreateIndexProps {
     // #[prop_or(String::from("this is value"))]
     #[prop_or(false)]
     pub display_create_index: bool,
-    pub on_toggle:Callback<Msg>,
+    pub on_toggle_createindex:Callback<Msg>,
 }
 pub struct IndexCreate {
     // `ComponentLink` is like a reference to a component.
     // It can be used to send messages to the component
     link: ComponentLink<Self>,
     props: WindowCreateIndexProps,
-    callback_toggle: Callback<Msg>,
+    callback_toggle_createindex: Callback<Msg>,
 }
 
 impl Component for IndexCreate {
@@ -27,7 +27,7 @@ impl Component for IndexCreate {
     fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         Self {
             link,
-            callback_toggle: props.on_toggle.clone(),
+            callback_toggle_createindex: props.on_toggle_createindex.clone(),
             props,
         }
     }
@@ -35,7 +35,7 @@ impl Component for IndexCreate {
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
         match msg{
             Msg::ToggleCreateIndex => {
-                self.callback_toggle.emit(Msg::ToggleCreateIndex);
+                self.callback_toggle_createindex.emit(Msg::ToggleCreateIndex);
                 true
             }
         }

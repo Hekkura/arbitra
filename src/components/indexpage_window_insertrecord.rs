@@ -9,7 +9,7 @@ pub struct WindowInsertRecordProps {
     // #[prop_or(String::from("this is value"))]
     #[prop_or(false)]
     pub display_insert_record: bool,
-    pub on_toggle:Callback<Msg>,
+    pub on_toggle_insertrecord:Callback<Msg>,
 }
 
 pub struct InsertRecord {
@@ -17,7 +17,7 @@ pub struct InsertRecord {
     // It can be used to send messages to the component
     link: ComponentLink<Self>,
     props: WindowInsertRecordProps,
-    callback_toggle: Callback<Msg>,
+    callback_toggle_insertrecord: Callback<Msg>,
 }
 
 impl Component for InsertRecord {
@@ -27,7 +27,7 @@ impl Component for InsertRecord {
     fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         Self {
             link,
-            callback_toggle: props.on_toggle.clone(),
+            callback_toggle_insertrecord: props.on_toggle_insertrecord.clone(),
             props,
         }
     }
@@ -35,7 +35,7 @@ impl Component for InsertRecord {
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
         match msg {
             Msg::ToggleInsertRecord => {
-                self.callback_toggle.emit(Msg::ToggleInsertRecord);
+                self.callback_toggle_insertrecord.emit(Msg::ToggleInsertRecord);
                 true
             }
         }
