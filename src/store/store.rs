@@ -11,15 +11,15 @@ pub struct State {
 //Enum Mirip seperti event event Msg
 pub enum CounterInput {
     //Increment count by one.
-    Increment,
-    Reset,
+    // Increment,
+    // Reset,
     UpdateUsername(String),
 }
 
 pub enum CounterOutput {
     //Output the current count but doubled
-    Doubled(u32),
-    AddFive(u32),
+    // Doubled(u32),
+    // AddFive(u32),
     Ignore,
 
 }
@@ -54,18 +54,18 @@ impl Store for CounterStore {
         let state = Rc::make_mut(&mut self.state);
 
         match msg {
-            CounterInput::Increment => {
-                state.count += 1;
-                //Response with current count doubled.
-                self.link
-                    .respond(who, CounterOutput::Doubled(state.count *2));
-            }
-            CounterInput::Reset => {
-                state.count = 0;
-                //Response with current count doubled.
-                self.link
-                    .respond(who, CounterOutput::AddFive(state.count + 5));
-            }
+            // CounterInput::Increment => {
+            //     state.count += 1;
+            //     //Response with current count doubled.
+            //     self.link
+            //         .respond(who, CounterOutput::Doubled(state.count *2));
+            // }
+            // CounterInput::Reset => {
+            //     state.count = 0;
+            //     //Response with current count doubled.
+            //     self.link
+            //         .respond(who, CounterOutput::AddFive(state.count + 5));
+            // }
             CounterInput::UpdateUsername(username) => {
                 state.username = Some(username);
                 self.link

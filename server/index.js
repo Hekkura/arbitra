@@ -17,8 +17,8 @@ app.listen(port, () => {
 app.get('/dashboard_data', (req, res) => {
   var data =
     {
-      request_amount: 999,
-      ping: null,
+      request_amount: 1412,
+      ping: 47,
     }
 
   let condition = "server error not";
@@ -39,3 +39,28 @@ app.get('/dashboard_data', (req, res) => {
 
 })
 
+//GET DATA UNTUK STATISTIC DI INDEX PAGE
+app.get('/index_stat_data', (req,res) => {
+  var data = 
+  {
+    no_records: 123,
+    record_size: 2948,
+  }
+
+  let condition = "server error not";
+
+  if (condition == "server error") {
+    let error = {
+      error_description: "server currently error"
+    }
+    res.status(500).send(error)
+  } else if (condition == "authentication failed") {
+    let error = {
+      error_description: "auth failed"
+    }
+    res.status(400).send(error)
+  } else {
+    res.status(200).send(data)
+  }
+
+})

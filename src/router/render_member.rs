@@ -80,7 +80,7 @@ impl Component for RenderMember {
                 }
 
                 _ => {
-                    route_service.set_route("/", ());
+                    route_service.set_route("/index", ());
                     html!{
                         <IndexPage/>
                     }

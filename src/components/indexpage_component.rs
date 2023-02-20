@@ -192,18 +192,20 @@ impl Component for IndexPageComp {
                                 <div class="dropdownRecord">
                                     <button class="mainmenubtnRecord">{ "Add Records \u{00a0} \u{00a0} \u{00a0} \u{23F7}"}</button>
                                     <div class="dropdown-childRecord">
-                                        <a href="#">{ "Link 1" }</a>
-                                        <a href="#">{ "Link 2" }</a>
-                                        <a href="#">{ "Link 3" }</a>
+                                        <a href="#">{ "Upload File" }</a>
+                                        <a href="#">{ "Use the API" }</a>
+                                        <a href="#">{ "Add Manually" }</a>
                                     </div>
                                 </div>
 
                                 <div class="dropdownRecord">
                                     <button class="mainmenubtnRecord">{ "Manage Index \u{00a0} \u{00a0} \u{00a0} \u{23F7}"}</button>
                                     <div class="dropdown-childRecord">
-                                        <a href="#">{ "Link 1" }</a>
-                                        <a href="#">{ "Link 2" }</a>
-                                        <a href="#">{ "Link 3" }</a>
+                                        <a href="#">{ "Rename" }</a>
+                                        <a href="#">{ "Duplicate" }</a>
+                                        <a href="#">{ "Copy Settings" }</a>
+                                        <a href="#">{ "Clear" }</a>
+                                        <a href="#">{ "Delete" }</a>
                                     </div>
                                 </div>
 

@@ -12,7 +12,7 @@ use yew::{
 };
 
 use crate::router::{
-    // render::Render,
+    render::Render,
     render_guest::RenderGuest,
     render_member::RenderMember,
 };
@@ -67,14 +67,14 @@ impl Component for App {
             
             Msg::Output(msg) => {
                 match msg { //HANDLE OUTPUT
-                    CounterOutput::Doubled(n) => {
-                        ConsoleService::info(&format!("count doubled would be {:?}", n));
-                        true
-                    }
-                    CounterOutput::AddFive(n) => {
-                        ConsoleService::info(&format!("count plus five would be {:?}", n));
-                        true
-                    }
+                    // CounterOutput::Doubled(n) => {
+                    //     ConsoleService::info(&format!("count doubled would be {:?}", n));
+                    //     true
+                    // }
+                    // CounterOutput::AddFive(n) => {
+                    //     ConsoleService::info(&format!("count plus five would be {:?}", n));
+                    //     true
+                    // }
                      _ => {
                         ConsoleService::info(&format!("ignored"));
                         false

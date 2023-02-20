@@ -90,37 +90,6 @@ impl Component for Render {
                     }
                 }
 
-                //TEMPORARY 
-
-
-
-
-                
-                // AppRoute::IndexCreate => {
-                //     html! {
-                //         <IndexCreate/>
-                //     }
-                // }
-                // AppRoute::AppCreate => {
-                //     html! {
-                //         <AppCreate/>
-                //     }
-                // }
-                // AppRoute::InsertRecord => {
-                //     html! {
-                //         <InsertRecord/>
-                //     }
-                // }
-                // AppRoute::EditRecord => {
-                //     html! {
-                //         <EditRecord/>
-                //     }
-                // }
-                // AppRoute::DeleteRecord => {
-                //     html! {
-                //         <DeleteRecord/>
-                //     }
-                // }
             }
         });
         html! {

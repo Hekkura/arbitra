@@ -62,14 +62,14 @@ impl Component for LoginPage {
             
             Msg::Output(msg) => {
                 match msg { //HANDLE OUTPUT
-                    CounterOutput::Doubled(n) => {
-                        ConsoleService::info(&format!("count doubled would be {:?}", n));
-                        true
-                    }
-                    CounterOutput::AddFive(n) => {
-                        ConsoleService::info(&format!("count plus five would be {:?}", n));
-                        true
-                    }
+                    // CounterOutput::Doubled(n) => {
+                    //     ConsoleService::info(&format!("count doubled would be {:?}", n));
+                    //     true
+                    // }
+                    // CounterOutput::AddFive(n) => {
+                    //     ConsoleService::info(&format!("count plus five would be {:?}", n));
+                    //     true
+                    // }
                      _ => {
                         ConsoleService::info(&format!("ignored"));
                         false

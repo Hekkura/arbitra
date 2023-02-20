@@ -56,7 +56,7 @@ impl Component for HomePage {
                 </div>
                 
                 <div class="middlebox">
-                    <p class="industryHeader">{ "Industry Use Cases" }</p>
+                    <a class="industryHeader" href="/index" >{ "OPEN INDEX PAGE (TEMP)" }</a>
                     <ul>
                         <li class="industryDesc">{ "Lorem Ipsum" }</li>
                         <li class="industryDesc">{ "Lorem Ipsum" }</li>
