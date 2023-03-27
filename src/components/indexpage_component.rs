@@ -573,8 +573,8 @@ impl IndexPageComp {
 
         match card.as_object() {
             Some(data_parse_3) => data_parse_3.iter().map(|(key, value)|{
-                ConsoleService::info(&format!("DEBUG DATAPARSE3  :{:?}", data_parse_3));
-                ConsoleService::info(&format!("DEBUG :{:?}, {:?}", key, value.to_string()));
+                // ConsoleService::info(&format!("DEBUG DATAPARSE3  :{:?}", data_parse_3));
+                // ConsoleService::info(&format!("DEBUG :{:?}, {:?}", key, value.to_string()));
                 html! {
                     <div class="card-json-line"> 
                        
@@ -583,7 +583,12 @@ impl IndexPageComp {
                                 match value.as_object() {
                                         Some (data) => data.iter().map(|(key, value)|{
                                             html!{
-                                                <p class="card-json-key"><b>{ key }</b>{" : "}{ serde_json::to_string_pretty(value).unwrap().replace(&['{', '}','"','_', '[', ']'], "") }</p>
+                                                <div class="data-fields"> 
+                                                    <b>{ key }</b>
+                                                    // {" : "}
+                                                    <p>{ serde_json::to_string_pretty(value).unwrap().replace(&['{', '}','"','_', '[', ']'], "") }</p>
+                                                </div> 
+                                                // <p class="card-json-key"><b>{ key }</b>{" : "}{ serde_json::to_string_pretty(value).unwrap().replace(&['{', '}','"','_', '[', ']'], "") }</p>
                                             }
                                         }).collect(),
                                     
@@ -591,7 +596,11 @@ impl IndexPageComp {
                                     }
                             } else {
                                 html!{
-                                    <p class="card-json-key"><b>{ key }</b>{" : "}{ serde_json::to_string_pretty(value).unwrap().replace(&['{', '}','"','_', '[', ']'], "") }</p>
+                                    <div class="data-header">
+                                            <b>{ key }</b>
+                                            // {" : "}
+                                            <p>{ serde_json::to_string_pretty(value).unwrap().replace(&['{', '}','"','_', '[', ']'], "") }</p>
+                                    </div>
                                 }
                             }
                             
