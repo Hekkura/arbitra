@@ -2,7 +2,8 @@ use yew::{prelude::*, services::ConsoleService};
 use serde_json::{from_str, Value, from_value, to_string_pretty};
 pub enum Msg {
     ToggleEditRecord,
-    ValidateInputJson(String)
+    ValidateInputJson(String),
+    UpdateTextAreaValue(String),
 }
 
 #[derive(Properties, Clone, Debug, PartialEq)]
@@ -49,7 +50,7 @@ impl Component for EditRecord {
             callback_toggle_editecord: props.on_toggle_editrecord.clone(),
             props,
             value: "".to_string(),
-            json_is_valid: false,
+            json_is_valid: true,
 
             textarea_string: textarea_pretty,
         }
@@ -70,6 +71,10 @@ impl Component for EditRecord {
                 };
                 ConsoleService::info(&format!("DEBUG : value:{:?}", self.value));
                 ConsoleService::info(&format!("DEBUG : json_is_valid:{:?}", self.json_is_valid));
+                true
+            }
+            Msg::UpdateTextAreaValue(data) => {
+                self.value = data;
                 true
             }
         }
@@ -110,10 +115,13 @@ impl Component for EditRecord {
                                 type="text" 
                                 class="insert-record" 
                                 style="font-size:12px;font-weight: bold; line-height: 1.4;"
-
-                                oninput = self.link.callback(|data: InputData| Msg::ValidateInputJson(data.value))
+                               
+                                oninput = self.link.callback(|data: InputData| {
+                                    Msg::ValidateInputJson(data.value)
+                                })
                                 >
                             {self.textarea_string.clone()}  
+                            // {""}
                             </textarea>
                         </form>   
                     </div> 

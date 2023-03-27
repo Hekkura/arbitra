@@ -496,19 +496,24 @@ impl IndexPageComp {
 
 
                                     <div class="card-json">    
-                                        <pre>
-                                            {"_id: "}{ serde_json::to_string_pretty(card.get("_id").unwrap()).unwrap() }{"\n"}
-                                            {"_score: "}{ serde_json::to_string_pretty(card.get("_score").unwrap()).unwrap() }{"\n"}
+                                        // <pre>
+                                        //     {"_id: "}{ serde_json::to_string_pretty(card.get("_id").unwrap()).unwrap() }{"\n"}
+                                        //     {"_score: "}{ serde_json::to_string_pretty(card.get("_score").unwrap()).unwrap() }{"\n"}
                                   
                                                 
-                                            <p style="color: black; font-size:12px;font-weight: bold; line-height: 1.8;">
-                                                { serde_json::to_string_pretty(card.get("fields").unwrap()).unwrap().replace(&['{', '}','"','_', '[', ']'], "") }
-                                            </p>
-                                        </pre>
-                                                
-                                            
+                                        //     <p style="color: black; font-size:12px;font-weight: bold; line-height: 1.8;">
+                                        //         { serde_json::to_string_pretty(card.get("fields").unwrap()).unwrap().replace(&['{', '}','"','_', '[', ']'], "") }
+                                        //     </p>
+                                        // </pre>
+
+                                        //DISPLAY DATA NEW
+                                        
+                                            { self.view_card(card) }
+
                                     </div>
-                                </div>
+                                </div> //END OF CARD-SUB
+
+                                //IMAGE CARD
                                     {
                                         match card.get("fields").unwrap().get("image"){ 
                                             Some(dataok) => {
@@ -523,7 +528,7 @@ impl IndexPageComp {
                                             }
                                         }
                                     }      
-                            </div>
+                            </div> //END OF .CARD-MAIN
 
                              
                             <div class="index-card-buttons">
@@ -563,9 +568,106 @@ impl IndexPageComp {
             }).collect()
     }
 
+    ///////////////////////
+    fn view_card(&self, card:&Value) -> Vec<Html> {
 
+        match card.as_object() {
+            Some(data_parse_3) => data_parse_3.iter().map(|(key, value)|{
+                ConsoleService::info(&format!("DEBUG DATAPARSE3  :{:?}", data_parse_3));
+                ConsoleService::info(&format!("DEBUG :{:?}, {:?}", key, value.to_string()));
+                html! {
+                    <div class="card-json-line"> 
+                       
+                        {
+                            if key.eq("fields") {
+                                match value.as_object() {
+                                        Some (data) => data.iter().map(|(key, value)|{
+                                            html!{
+                                                <p class="card-json-key"><b>{ key }</b>{" : "}{ serde_json::to_string_pretty(value).unwrap().replace(&['{', '}','"','_', '[', ']'], "") }</p>
+                                            }
+                                        }).collect(),
+                                    
+                                        None => html!{}
+                                    }
+                            } else {
+                                html!{
+                                    <p class="card-json-key"><b>{ key }</b>{" : "}{ serde_json::to_string_pretty(value).unwrap().replace(&['{', '}','"','_', '[', ']'], "") }</p>
+                                }
+                            }
+                            
+                        }
+                    </div>            
+
+                    
+                }  
+            }).collect(),
+
+            None => vec![html! {}],
+            }
+    }
 }
 
+        // self.record_data.get("data").unwrap().as_array()
+        // .unwrap().iter().map(|card|{
+        //     card.as_object().unwrap().iter().map(|(key, value)|{
+                
+        //         ConsoleService::info(&format!("DEBUG :{:?}, {:?}", key, value.to_string()));
+        //         html! {
+        //             <div class="card-json-line"> 
+        //                 <h1 class="card-json-key">{ key }</h1>
+        //                 { " : " }
+        //                 <p>{ value } </p>
+        //             </div>
+        //         }
+        //     }).collect()
+        // }).collect()
+
+        // match self.record_data.get("data") {
+        //     Some(data_parse)=>  
+        //         match data_parse.as_array() {
+        //             Some(data_parse_2) => {
+        //                 data_parse_2.iter().map(|card|{
+        //                     ConsoleService::info(&format!("DEBUG CARD :{:?}", card.to_string()));
+        //                     html! {
+        //                         <div class="card-json-line"> 
+        //                         {
+                                // match card.as_object() {
+                                //     Some(data_parse_3) => data_parse_3.iter().map(|(key, value)|{
+                                //         ConsoleService::info(&format!("DEBUG DATAPARSE3  :{:?}", data_parse_3));
+                                //         ConsoleService::info(&format!("DEBUG :{:?}, {:?}", key, value.to_string()));
+                                //         html! {
+                                //             <>
+                                //             <h1 class="card-json-key">{ key }</h1>
+                                //             { " : " }
+                                //             <p>{ value } </p>
+                                //             </>
+                                    
+                                //         }  
+                                //     }).collect(),
+
+                                //     None => vec![html! {}],
+                                //     }
+                                // }
+                            //    /div> <
+                            // }
+                        // }).collect()
+                    // }
+                    // None => vec![html! {}],                
+//                 },
+//             None => vec![html! {}]
+//         }
+//     }
+// }
+
+
+//    //NEW JSON CARD DISPLAY
+//    {
+//     let Some(card_map) = card.as_object() {
+//     for(key, value) in card_map {
+//         ConsoleService::info(&format!("DEBUG :{:?} : {:?}", key, value));
+//     }
+// }
+// }
 
 
 
